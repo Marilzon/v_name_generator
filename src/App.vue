@@ -62,12 +62,12 @@ import "bootstrap/dist/css/bootstrap.css"
 import "font-awesome/css/font-awesome.css"
 
 export default {
-  name: 'App',
+  name: "App",
   data: function () {
     return {
-      prefixes: ['Dev', 'Back', 'End'],
-      sufixes: ['Max', 'Front', 'End'],
-      domains: ['1', '2', '3']
+      prefixes: ["Dev", "Back", "End"],
+      sufixes: ["Max", "Front", "End"],
+      domains: ["1", "2", "3"]
     }
   }
 
