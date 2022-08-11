@@ -18,13 +18,14 @@
 						<h5>Prefixos <span class="badge bg-secondary">{{ prefixes.length }}</span></h5>
 						<div class="card-body">
 							<ul class="list-group">
-								<li class="list-group-item" v-for="prefix in prefixes" v-bind:key="prefix">
+								<li class="list-group-item d-flex justify-content-between align-items-center" v-for="prefix in prefixes" v-bind:key="prefix">
 									{{ prefix }}
+									<button class="btn text-muted" v-on:click="deletePrefix(prefix)"><i class="fa fa-trash"></i></button>
 								</li>
 							</ul>
 						</div>
 						<div class="input-group my-1">
-							<input type="text" v-model="prefix" class="form-control" placeholder="Prefixo">
+							<input type="text" v-model="prefix" v-on:keyup.enter="addPrefix(prefix)" class="form-control" placeholder="Prefixo">
 							<div class="input-group-prepend">
 								<button class="btn btn-outline-success mx-1" v-on:click="addPrefix(prefix)">
 									<i class="fa fa-plus"></i>
@@ -37,13 +38,14 @@
 						<h5>Sufixos <span class="badge bg-secondary">{{ sufixes.length }}</span></h5>
 						<div class="card-body">
 							<ul class="list-group">
-								<li class="list-group-item" v-for="sufix in sufixes" v-bind:key="sufix">
+								<li class="list-group-item d-flex justify-content-between align-items-center" v-for="sufix in sufixes" v-bind:key="sufix">
 									{{ sufix }}
+									<button class="btn text-muted" v-on:click="deleteSufix(sufix)"><i class="fa fa-trash"></i></button>
 								</li>
 							</ul>
 						</div>
 						<div class="input-group my-1">
-							<input type="text" v-model="sufix"  class="form-control" placeholder="Sufixo">
+							<input type="text" v-model="sufix" v-on:keyup.enter="addSufix(sufix)"  class="form-control" placeholder="Sufixo">
 							<div class="input-group-prepend">
 								<button class="btn btn-outline-success mx-1" v-on:click="addSufix(sufix)">
 									<i class="fa fa-plus"></i>
@@ -79,9 +81,9 @@ export default {
 		return {
 			prefix: "",
 			sufix: "",
-			prefixes: ["Dev", "Back", "End"],
-			sufixes: ["Max", "Front", "End"],
-			domains: ["1", "2", "3"]
+			prefixes: [],
+			sufixes: [],
+			domains: []
 		}
 	},
 	methods: {
@@ -92,6 +94,23 @@ export default {
 		addSufix(sufix) {
 			this.sufixes.push(sufix)
 			this.sufix = ""
+			this.generateDomain()
+		},
+		deletePrefix(prefix) {
+			this.prefixes.splice(this.prefixes.indexOf(prefix), 1)
+			this.generateDomain()
+		},
+		deleteSufix(sufix) {
+			this.sufixes.splice(this.sufixes.indexOf(sufix), 1)
+			this.generateDomain()
+		},
+		generateDomain() {
+			this.domains = []
+			for (let prefix of this.prefixes) {
+				for (let sufix of this.sufixes) {
+					this.domains.push(prefix + sufix)
+				}
+			}
 		}
 	}
 
