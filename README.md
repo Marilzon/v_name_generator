@@ -1,23 +1,25 @@
 # v_name_generator
 
-## Project setup
+ - Gerador de nomes para seu dominio, recebendo como parametros Prefixo e Sufixo e gerando uma lista de sugestões.
+
+## Instalação
 ```
-npm install
+npm install || yarn
 ```
 
-### Compiles and hot-reloads for development
+### Executando release para testes e desenvolvimento
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run serve || yarn serve
 ```
 
-### Lints and fixes files
+### Compilando codigo para minificar em produção (dist)
 ```
-npm run lint
+npm run build || yran build
+```
+
+### Verificador de regras e sintaxes definidas
+```
+npm run lint || yarn lint
 ```
 
 ### Customize configuration
