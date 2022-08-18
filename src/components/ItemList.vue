@@ -47,4 +47,11 @@ export default {
 </script>
 
 <style scoped>
+	.form-control:focus {
+		color: #212529;
+		background-color: #fff;
+		border-color: #86fe92;
+		outline: 0;
+		box-shadow: 0 0 0 0.1rem rgba(57, 253, 13, 0.25);
+	}
 </style>
